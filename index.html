@@ -139,6 +139,37 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
     }
   </style>
+  <script id="xhr-response-text-guard">
+    (function () {
+      const proto = window.XMLHttpRequest && window.XMLHttpRequest.prototype;
+      if (!proto) return;
+
+      const descriptor = Object.getOwnPropertyDescriptor(proto, "responseText");
+      if (
+        !descriptor ||
+        typeof descriptor.get !== "function" ||
+        descriptor.configurable === false
+      ) {
+        return;
+      }
+
+      Object.defineProperty(proto, "responseText", {
+        configurable: true,
+        enumerable: descriptor.enumerable,
+        get: function () {
+          try {
+            return descriptor.get.call(this);
+          } catch (error) {
+            const responseType = this.responseType;
+            if (responseType && responseType !== "text") {
+              return "";
+            }
+            throw error;
+          }
+        },
+      });
+    })();
+  </script>
   <script id="splash-screen-script">
     window.__kessBoot = window.__kessBoot || {};
     window.__kessBoot.enableStartupLog =
