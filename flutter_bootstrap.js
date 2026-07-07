@@ -43,12 +43,133 @@ const kessStartupLog =
 
 kessStartupLog('[startup] flutter_bootstrap_loaded at ' + performance.now().toFixed(1) + 'ms');
 
+function kessIsAviatorLaunch() {
+  const params = new URLSearchParams(window.location.search);
+  let savedRoute = '';
+  try {
+    savedRoute =
+      window.localStorage.getItem('flutter.last_route') ||
+      window.localStorage.getItem('last_route') ||
+      '';
+  } catch (error) {
+    savedRoute = '';
+  }
+  return window.__kessAviatorLaunch === true ||
+    document.documentElement.classList.contains('aviator-launch') ||
+    window.location.pathname === '/aviator' ||
+    savedRoute.includes('/aviator') ||
+    (
+      savedRoute.includes('operator=') &&
+      savedRoute.includes('token=')
+    ) ||
+    (
+      params.has('operator') &&
+      params.has('user') &&
+      params.has('token')
+    );
+}
+
+function kessShouldHoldAviatorSplash() {
+  return kessIsAviatorLaunch() && window.__aviatorSplashRelease !== true;
+}
+
+function kessRemoveSplashFromWeb() {
+  if (kessShouldHoldAviatorSplash()) {
+    window.__aviatorSplashRemovalPending = true;
+    kessStartupLog('[startup] aviator_splash_hold at ' + performance.now().toFixed(1) + 'ms');
+    return;
+  }
+
+  kessStartupLog('[startup] splash_removed at ' + performance.now().toFixed(1) + 'ms');
+  document.getElementById('splash')?.remove();
+  document.getElementById('splash-branding')?.remove();
+  document.body.style.background = 'transparent';
+}
+
+if (typeof window.removeSplashFromWeb !== 'function') {
+  window.removeSplashFromWeb = kessRemoveSplashFromWeb;
+}
+
+if (window.__kessAviatorSplashListenerInstalled !== true) {
+  window.__kessAviatorSplashListenerInstalled = true;
+  window.addEventListener('aviator-app-ready', function () {
+    window.__aviatorSplashRelease = true;
+    kessStartupLog('[startup] aviator_app_ready at ' + performance.now().toFixed(1) + 'ms');
+    window.removeSplashFromWeb();
+  });
+}
+
 window.addEventListener('flutter-first-frame', function () {
   kessStartupLog('[startup] flutter_first_frame at ' + performance.now().toFixed(1) + 'ms');
-  if (typeof removeSplashFromWeb === 'function') {
-    removeSplashFromWeb();
+  if (typeof window.removeSplashFromWeb === 'function') {
+    window.removeSplashFromWeb();
   }
 });
+
+window.addEventListener('dart-app-ready', function () {
+  kessStartupLog('[startup] dart_app_ready at ' + performance.now().toFixed(1) + 'ms');
+  if (typeof window.removeSplashFromWeb === 'function') {
+    window.removeSplashFromWeb();
+  }
+});
+
+function runDdcMainWithoutDebugExtension() {
+  if (typeof window.$dartRunMain !== 'function') {
+    return false;
+  }
+
+  if (window.$dartMainExecuted === true) {
+    return true;
+  }
+
+  wrapDdcMainTearOffs();
+
+  if (window.__kessDdcRunMainWrapped !== true) {
+    const originalRunMain = window.$dartRunMain;
+    window.$dartRunMain = function () {
+      if (window.$dartMainExecuted === true) {
+        kessStartupLog('[startup] ddc_duplicate_run_main_skipped at ' + performance.now().toFixed(1) + 'ms');
+        return;
+      }
+      return originalRunMain.apply(this, arguments);
+    };
+    window.__kessDdcRunMainWrapped = true;
+  }
+
+  kessStartupLog('[startup] ddc_auto_run_main at ' + performance.now().toFixed(1) + 'ms');
+  window.$dartRunMain();
+  return true;
+}
+
+function wrapDdcMainTearOffs() {
+  const tearOffs = window.$dartMainTearOffs;
+  if (
+    !Array.isArray(tearOffs) ||
+    window.__kessDdcMainTearOffsRef === tearOffs
+  ) {
+    return;
+  }
+
+  window.$dartMainTearOffs = tearOffs.map(function (main) {
+    return function () {
+      if (window.__kessDdcMainTearOffExecuted === true) {
+        kessStartupLog('[startup] ddc_duplicate_main_tearoff_skipped at ' + performance.now().toFixed(1) + 'ms');
+        return;
+      }
+      window.__kessDdcMainTearOffExecuted = true;
+      return main.apply(this, arguments);
+    };
+  });
+  window.__kessDdcMainTearOffsRef = window.$dartMainTearOffs;
+}
+
+function isDdcDebugBuild() {
+  const builds = window._flutter?.buildConfig?.builds;
+  return Array.isArray(builds) &&
+    builds.some(function (build) {
+      return build.compileTarget === 'dartdevc';
+    });
+}
 
 _flutter.loader.load({
   onEntrypointLoaded: async function (engineInitializer) {
@@ -59,3 +180,19 @@ _flutter.loader.load({
     kessStartupLog('[startup] run_app_completed at ' + performance.now().toFixed(1) + 'ms');
   }
 });
+
+if (isDdcDebugBuild()) {
+  const ddcAutoRunStartedAt = performance.now();
+  const ddcAutoRunTimeoutMs = 10000;
+  const ddcAutoRunTimer = window.setInterval(function () {
+    const elapsed = performance.now() - ddcAutoRunStartedAt;
+    if (runDdcMainWithoutDebugExtension()) {
+      window.clearInterval(ddcAutoRunTimer);
+      return;
+    }
+    if (elapsed > ddcAutoRunTimeoutMs) {
+      kessStartupLog('[startup] ddc_auto_run_timeout at ' + performance.now().toFixed(1) + 'ms');
+      window.clearInterval(ddcAutoRunTimer);
+    }
+  }, 100);
+}
