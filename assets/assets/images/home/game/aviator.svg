@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="416" viewBox="0 0 520 416">
+  <defs>
+    <radialGradient id="g" cx="12%" cy="93%" r="108%">
+      <stop offset="0" stop-color="#202020"/>
+      <stop offset=".55" stop-color="#101112"/>
+      <stop offset="1" stop-color="#080808"/>
+    </radialGradient>
+    <linearGradient id="r" x1="50" y1="360" x2="470" y2="88">
+      <stop offset="0" stop-color="#5f0011"/>
+      <stop offset=".54" stop-color="#e50539"/>
+      <stop offset="1" stop-color="#ff4964"/>
+    </linearGradient>
+    <clipPath id="clip">
+      <rect width="520" height="416" rx="34"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip)">
+    <rect width="520" height="416" fill="url(#g)"/>
+    <g opacity=".32" fill="#252525">
+      <path d="M0 416 520 0v54L0 416Z"/>
+      <path d="M0 416 520 114v38L0 416Z"/>
+      <path d="M0 416 520 211v31L0 416Z"/>
+      <path d="M0 416 520 300v26L0 416Z"/>
+      <path d="M0 416 430 416H0Z"/>
+    </g>
+    <path d="M82 302c59-15 122-33 189-54 38-12 88-29 150-51 16-6 25-4 28 6 2 8-3 16-15 24-35 21-90 41-165 60-76 19-141 30-195 33-23 1-36-3-40-12-2-5 14-7 48-6Z" fill="url(#r)"/>
+    <path d="M120 235c17-12 34-13 51-3l96 54-51 13-96-64Z" fill="#e50539"/>
+    <path d="M78 286 43 251c14-2 25 2 33 11l32 35-30-11Z" fill="#e50539"/>
+    <path d="M380 95c19 0 35 4 49 13 14 9 25 22 32 39-31-14-65-17-101-8-31 8-62 25-94 51l-42-24c54-47 106-71 156-71Z" fill="#e50539" opacity=".95"/>
+    <text x="40" y="92" fill="#e50539" font-size="50" font-family="Arial, Helvetica, sans-serif" font-style="italic" font-weight="700">Aviator</text>
+    <text x="40" y="135" fill="#ffffff" font-size="23" font-family="Arial, Helvetica, sans-serif" font-weight="700" letter-spacing="2">CRASH GAME</text>
+    <path d="M42 154h188" stroke="#e50539" stroke-width="8" stroke-linecap="round"/>
+    <rect x="37" y="333" width="180" height="44" rx="22" fill="#28a909"/>
+    <text x="74" y="362" fill="#fff" font-size="23" font-family="Arial, Helvetica, sans-serif" font-weight="700">PLAY NOW</text>
+  </g>
+</svg>

@@ -87,6 +87,39 @@
       }
     })();
   </script>
+  
+  <script id="xhr-response-text-guard">
+    (function () {
+      const proto = window.XMLHttpRequest && window.XMLHttpRequest.prototype;
+      if (!proto) return;
+
+      const descriptor = Object.getOwnPropertyDescriptor(proto, "responseText");
+      if (
+        !descriptor ||
+        typeof descriptor.get !== "function" ||
+        descriptor.configurable === false
+      ) {
+        return;
+      }
+
+      Object.defineProperty(proto, "responseText", {
+        configurable: true,
+        enumerable: descriptor.enumerable,
+        get: function () {
+          try {
+            return descriptor.get.call(this);
+          } catch (error) {
+            const responseType = this.responseType;
+            if (responseType && responseType !== "text") {
+              return "";
+            }
+            throw error;
+          }
+        },
+      });
+    })();
+  </script>
+  
   <style id="splash-screen-style">
     html {
       height: 100%
@@ -96,8 +129,7 @@
       margin: 0;
       min-height: 100%;
       background-color: #10141e;
-      background-size: 100% 100%;
-      font-family: Arial, sans-serif;
+          background-size: 100% 100%;
     }
 
     .center {
@@ -145,289 +177,22 @@
       bottom: 0;
       right: 0;
     }
-
-    .splash-shell {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #10141e;
-    }
-
-    .splash-logo {
-      display: block;
-      width: min(72vw, 360px);
-      height: auto;
-      object-fit: contain;
-    }
-
-    .aviator-main-loading {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .aviator-main-loading-powered-by {
-      padding: 4px 0;
-    }
-
-    .aviator-main-loading-powered-by-base64 {
-      background-image: url("aviator-main-loading-powered-by.png");
-      width: 80px;
-      height: 10px;
-      background-size: 80px 10px;
-    }
-
-    .aviator-main-loading-logo-base64 {
-      background-image: url("aviator-main-loading-logo.png");
-    }
-
-    .aviator-main-loading-logo {
-      display: block;
-      width: 137px;
-      height: 48px;
-      background-size: 137px 48px;
-      margin-bottom: 12px;
-    }
-
-    .aviator-main-loading > .spinner {
-      display: flex;
-      align-items: center;
-      position: relative;
-      width: 36px;
-      height: 36px;
-    }
-
-    .aviator-main-loading > .spinner div {
-      position: absolute;
-      border-radius: 50%;
-      background: #f01d14;
-      width: 14px;
-      height: 14px;
-      padding: 0;
-    }
-
-    .aviator-main-loading > .spinner div:nth-child(1) {
-      -webkit-animation: aviator-spinner-ellipsis1 0.9s infinite ease-in-out;
-      animation: aviator-spinner-ellipsis1 0.9s infinite ease-in-out;
-      opacity: 0;
-    }
-
-    .aviator-main-loading > .spinner div:nth-child(2) {
-      -webkit-animation: aviator-spinner-ellipsis2 0.9s infinite ease-in-out;
-      animation: aviator-spinner-ellipsis2 0.9s infinite ease-in-out;
-      opacity: 0;
-    }
-
-    .aviator-main-loading > .spinner div:nth-child(3) {
-      -webkit-animation: aviator-spinner-ellipsis3 0.9s infinite ease-in-out;
-      animation: aviator-spinner-ellipsis3 0.9s infinite ease-in-out;
-      opacity: 0.5;
-    }
-
-    @-webkit-keyframes aviator-spinner-ellipsis1 {
-      0%,
-      33% {
-        -webkit-transform: translateX(-4px) scale(0.33);
-        opacity: 0.5;
-      }
-      100% {
-        -webkit-transform: translateX(11px) scale(1);
-        opacity: 1;
-      }
-    }
-
-    @-webkit-keyframes aviator-spinner-ellipsis2 {
-      0%,
-      33% {
-        -webkit-transform: translateX(11px) scale(1);
-        opacity: 1;
-      }
-      100% {
-        -webkit-transform: translateX(26px) scale(0.33);
-        opacity: 0.5;
-      }
-    }
-
-    @-webkit-keyframes aviator-spinner-ellipsis3 {
-      0%,
-      33% {
-        -webkit-transform: translateX(26px) scale(0.33);
-      }
-      100% {
-        -webkit-transform: translateX(-4px) scale(0.33);
-      }
-    }
-
-    @keyframes aviator-spinner-ellipsis1 {
-      0%,
-      33% {
-        -webkit-transform: translateX(-4px) scale(0.33);
-        transform: translateX(-4px) scale(0.33);
-        opacity: 0.5;
-      }
-      100% {
-        -webkit-transform: translateX(11px) scale(1);
-        transform: translateX(11px) scale(1);
-        opacity: 1;
-      }
-    }
-
-    @keyframes aviator-spinner-ellipsis2 {
-      0%,
-      33% {
-        -webkit-transform: translateX(11px) scale(1);
-        transform: translateX(11px) scale(1);
-        opacity: 1;
-      }
-      100% {
-        -webkit-transform: translateX(26px) scale(0.33);
-        transform: translateX(26px) scale(0.33);
-        opacity: 0.5;
-      }
-    }
-
-    @keyframes aviator-spinner-ellipsis3 {
-      0%,
-      33% {
-        -webkit-transform: translateX(26px) scale(0.33);
-        transform: translateX(26px) scale(0.33);
-      }
-      100% {
-        -webkit-transform: translateX(-4px) scale(0.33);
-        transform: translateX(-4px) scale(0.33);
-      }
-    }
-
-    html.aviator-launch body {
-      background-color: #000000;
-    }
-
-    html.aviator-launch .splash-shell {
-      background: #000000;
-    }
-
-    html.aviator-launch .splash-logo {
-      display: none;
-    }
-
-    html.aviator-launch .aviator-main-loading {
-      display: inline-flex;
-    }
   </style>
-  <script id="xhr-response-text-guard">
-    (function () {
-      const proto = window.XMLHttpRequest && window.XMLHttpRequest.prototype;
-      if (!proto) return;
-
-      const descriptor = Object.getOwnPropertyDescriptor(proto, "responseText");
-      if (
-        !descriptor ||
-        typeof descriptor.get !== "function" ||
-        descriptor.configurable === false
-      ) {
-        return;
-      }
-
-      Object.defineProperty(proto, "responseText", {
-        configurable: true,
-        enumerable: descriptor.enumerable,
-        get: function () {
-          try {
-            return descriptor.get.call(this);
-          } catch (error) {
-            const responseType = this.responseType;
-            if (responseType && responseType !== "text") {
-              return "";
-            }
-            throw error;
-          }
-        },
-      });
-    })();
-  </script>
   <script id="splash-screen-script">
-    window.__kessBoot = window.__kessBoot || {};
-    let startupLogEnabled = window.location.search.includes('startupLog=1');
-    try {
-      startupLogEnabled =
-        startupLogEnabled || window.localStorage.getItem('startupLog') === '1';
-    } catch (error) {
-      startupLogEnabled = startupLogEnabled;
-    }
-    window.__kessBoot.enableStartupLog = startupLogEnabled;
-    window.__kessBoot.startupLog = function (message) {
-      if (window.__kessBoot.enableStartupLog) {
-        console.log(message);
-      }
-    };
-    window.__kessBoot.splashVisibleAt = performance.now();
-    window.__kessBoot.startupLog("[startup] splash_visible at " + window.__kessBoot.splashVisibleAt.toFixed(1) + "ms");
-
-    const navEntries = performance.getEntriesByType("navigation");
-    if (navEntries && navEntries.length > 0) {
-      const nav = navEntries[0];
-      window.__kessBoot.startupLog("[startup] nav_response_start at " + nav.responseStart.toFixed(1) + "ms");
-      window.__kessBoot.startupLog("[startup] nav_dom_content_loaded at " + nav.domContentLoadedEventEnd.toFixed(1) + "ms");
-      window.__kessBoot.startupLog("[startup] nav_load_event_end at " + nav.loadEventEnd.toFixed(1) + "ms");
-    }
-
-    window.__aviatorSplashRelease = false;
-    window.__aviatorSplashRemovalPending = false;
-
-    window.shouldHoldAviatorSplash = function () {
-      return (
-        window.__kessAviatorLaunch === true ||
-        document.documentElement.classList.contains("aviator-launch")
-      ) &&
-        window.__aviatorSplashRelease !== true;
-    };
-
-    window.removeSplashFromWeb = function () {
-      if (window.shouldHoldAviatorSplash()) {
-        window.__aviatorSplashRemovalPending = true;
-        window.__kessBoot.startupLog("[startup] aviator_splash_hold at " + performance.now().toFixed(1) + "ms");
-        return;
-      }
-      const now = performance.now();
-      window.__kessBoot.startupLog("[startup] splash_removed at " + now.toFixed(1) + "ms");
+    function removeSplashFromWeb() {
       document.getElementById("splash")?.remove();
       document.getElementById("splash-branding")?.remove();
       document.body.style.background = "transparent";
-    };
-
-    window.addEventListener("aviator-app-ready", function () {
-      window.__aviatorSplashRelease = true;
-      window.__kessBoot.startupLog("[startup] aviator_app_ready at " + performance.now().toFixed(1) + "ms");
-      window.removeSplashFromWeb();
-    });
+    }
   </script>
 </head>
 <body>
-  <div id="splash" class="splash-shell">
-    <img
-      class="splash-logo"
-      src="assets/assets/launcher/preloader-v4.1.3.png"
-      alt="Svip321"
-    >
-    <div class="aviator-main-loading" aria-label="Powered by Spribe">
-      <div class="aviator-main-loading-powered-by">
-        <div class="aviator-main-loading-powered-by-base64"></div>
-      </div>
-      <div class="aviator-main-loading-logo aviator-main-loading-logo-base64"></div>
-      <div class="spinner">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
-  </div>
+  <picture id="splash">
+      <source srcset="splash/img/light-1x.png 1x, splash/img/light-2x.png 2x, splash/img/light-3x.png 3x, splash/img/light-4x.png 4x" media="(prefers-color-scheme: light)">
+      <source srcset="splash/img/dark-1x.png 1x, splash/img/dark-2x.png 2x, splash/img/dark-3x.png 3x, splash/img/dark-4x.png 4x" media="(prefers-color-scheme: dark)">
+      <img class="center" aria-hidden="true" src="splash/img/light-1x.png" alt="">
+  </picture>
+  
   
   
   
@@ -436,6 +201,7 @@
   
   
   <script src="flutter_bootstrap.js?v=ddc-fallback-4" async=""></script>
+
 
 
 </body></html>

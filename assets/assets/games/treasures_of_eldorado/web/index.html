@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>Treasures of El Dorado</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #000;
+        overflow: hidden;
+        color: #9cf;
+        font: 12px/1.4 system-ui, sans-serif;
+      }
+      #RDSgame {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      #status {
+        position: fixed;
+        left: 10px;
+        bottom: 10px;
+        z-index: 9;
+        background: rgba(0, 0, 0, 0.65);
+        padding: 6px 10px;
+        border-radius: 6px;
+        max-width: 90vw;
+        pointer-events: none;
+      }
+      #missing {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        text-align: center;
+        background: #0b0b0b;
+        color: #f6c;
+        z-index: 20;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="RDSgame"></canvas>
+    <div id="rules-container"><div id="rules"></div></div>
+    <div id="status">Waiting Flutter bootstrap…</div>
+    <div id="missing">
+      Official game files not found.<br />
+      Copy mirror <code>game/</code> into
+      <code>assets/games/treasures_of_eldorado/game/</code>
+      (needs <code>js/bundle.js</code> + assets), then rebuild.<br />
+      Or open with <code>game_base_url=https://…/</code>.
+    </div>
+    <script src="bridge.js"></script>
+  </body>
+</html>

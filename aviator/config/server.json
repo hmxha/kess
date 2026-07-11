@@ -1,0 +1,23 @@
+{
+  "brandLogo": "",
+  "brandName": "KessGame",
+  "userWithOperator": true,
+  "ws": {
+    "host": "127.0.0.1",
+    "port": 3250,
+    "useSSL": false,
+    "zone": "aviator_core",
+    "debug": true,
+    "id": 1
+  },
+  "servers": [
+    {
+      "host": "127.0.0.1",
+      "port": 3250,
+      "useSSL": false,
+      "zone": "aviator_core",
+      "debug": true,
+      "id": 1
+    }
+  ]
+}

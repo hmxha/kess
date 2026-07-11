@@ -1,0 +1,610 @@
+{
+  "atlases": [
+    {
+      "name": "gold_coin",
+      "path": "images/effects/coin_atlas/gold_coin.webp",
+      "cellWidth": 76,
+      "cellHeight": 80,
+      "width": 456,
+      "height": 160,
+      "frames": [
+        {
+          "source": "images/effects/coin/gold_coin/001.png",
+          "x": 0,
+          "y": 0,
+          "width": 76,
+          "height": 80
+        },
+        {
+          "source": "images/effects/coin/gold_coin/002.png",
+          "x": 76,
+          "y": 0,
+          "width": 76,
+          "height": 80
+        },
+        {
+          "source": "images/effects/coin/gold_coin/003.png",
+          "x": 152,
+          "y": 0,
+          "width": 76,
+          "height": 80
+        },
+        {
+          "source": "images/effects/coin/gold_coin/004.png",
+          "x": 228,
+          "y": 0,
+          "width": 76,
+          "height": 80
+        },
+        {
+          "source": "images/effects/coin/gold_coin/005.png",
+          "x": 304,
+          "y": 0,
+          "width": 76,
+          "height": 80
+        },
+        {
+          "source": "images/effects/coin/gold_coin/006.png",
+          "x": 380,
+          "y": 0,
+          "width": 76,
+          "height": 80
+        },
+        {
+          "source": "images/effects/coin/gold_coin/007.png",
+          "x": 0,
+          "y": 80,
+          "width": 76,
+          "height": 80
+        },
+        {
+          "source": "images/effects/coin/gold_coin/008.png",
+          "x": 76,
+          "y": 80,
+          "width": 76,
+          "height": 80
+        },
+        {
+          "source": "images/effects/coin/gold_coin/009.png",
+          "x": 152,
+          "y": 80,
+          "width": 76,
+          "height": 80
+        },
+        {
+          "source": "images/effects/coin/gold_coin/010.png",
+          "x": 228,
+          "y": 80,
+          "width": 76,
+          "height": 80
+        },
+        {
+          "source": "images/effects/coin/gold_coin/011.png",
+          "x": 304,
+          "y": 80,
+          "width": 76,
+          "height": 80
+        },
+        {
+          "source": "images/effects/coin/gold_coin/012.png",
+          "x": 380,
+          "y": 80,
+          "width": 76,
+          "height": 80
+        }
+      ]
+    },
+    {
+      "name": "silver_coin",
+      "path": "images/effects/coin_atlas/silver_coin.webp",
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "width": 288,
+      "height": 96,
+      "frames": [
+        {
+          "source": "images/effects/coin/silver_coin/001.png",
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "source": "images/effects/coin/silver_coin/002.png",
+          "x": 48,
+          "y": 0,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "source": "images/effects/coin/silver_coin/003.png",
+          "x": 96,
+          "y": 0,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "source": "images/effects/coin/silver_coin/004.png",
+          "x": 144,
+          "y": 0,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "source": "images/effects/coin/silver_coin/005.png",
+          "x": 192,
+          "y": 0,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "source": "images/effects/coin/silver_coin/006.png",
+          "x": 240,
+          "y": 0,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "source": "images/effects/coin/silver_coin/007.png",
+          "x": 0,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "source": "images/effects/coin/silver_coin/008.png",
+          "x": 48,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "source": "images/effects/coin/silver_coin/009.png",
+          "x": 96,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "source": "images/effects/coin/silver_coin/010.png",
+          "x": 144,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "source": "images/effects/coin/silver_coin/011.png",
+          "x": 192,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "source": "images/effects/coin/silver_coin/012.png",
+          "x": 240,
+          "y": 48,
+          "width": 48,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "name": "coin_bomb_01",
+      "path": "images/effects/coin_atlas/coin_bomb_01.webp",
+      "cellWidth": 1024,
+      "cellHeight": 1004,
+      "width": 4096,
+      "height": 4016,
+      "frames": [
+        {
+          "source": "images/effects/coin/coin_bomb/001.png",
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/002.png",
+          "x": 1024,
+          "y": 0,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/003.png",
+          "x": 2048,
+          "y": 0,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/004.png",
+          "x": 3072,
+          "y": 0,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/005.png",
+          "x": 0,
+          "y": 1004,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/006.png",
+          "x": 1024,
+          "y": 1004,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/007.png",
+          "x": 2048,
+          "y": 1004,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/008.png",
+          "x": 3072,
+          "y": 1004,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/009.png",
+          "x": 0,
+          "y": 2008,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/010.png",
+          "x": 1024,
+          "y": 2008,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/011.png",
+          "x": 2048,
+          "y": 2008,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/012.png",
+          "x": 3072,
+          "y": 2008,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/013.png",
+          "x": 0,
+          "y": 3012,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/014.png",
+          "x": 1024,
+          "y": 3012,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/015.png",
+          "x": 2048,
+          "y": 3012,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/016.png",
+          "x": 3072,
+          "y": 3012,
+          "width": 1024,
+          "height": 1004
+        }
+      ]
+    },
+    {
+      "name": "coin_bomb_02",
+      "path": "images/effects/coin_atlas/coin_bomb_02.webp",
+      "cellWidth": 1024,
+      "cellHeight": 1004,
+      "width": 4096,
+      "height": 4016,
+      "frames": [
+        {
+          "source": "images/effects/coin/coin_bomb/017.png",
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/018.png",
+          "x": 1024,
+          "y": 0,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/019.png",
+          "x": 2048,
+          "y": 0,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/020.png",
+          "x": 3072,
+          "y": 0,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/021.png",
+          "x": 0,
+          "y": 1004,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/022.png",
+          "x": 1024,
+          "y": 1004,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/023.png",
+          "x": 2048,
+          "y": 1004,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/024.png",
+          "x": 3072,
+          "y": 1004,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/025.png",
+          "x": 0,
+          "y": 2008,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/026.png",
+          "x": 1024,
+          "y": 2008,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/027.png",
+          "x": 2048,
+          "y": 2008,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/028.png",
+          "x": 3072,
+          "y": 2008,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/029.png",
+          "x": 0,
+          "y": 3012,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/030.png",
+          "x": 1024,
+          "y": 3012,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/031.png",
+          "x": 2048,
+          "y": 3012,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/032.png",
+          "x": 3072,
+          "y": 3012,
+          "width": 1024,
+          "height": 1004
+        }
+      ]
+    },
+    {
+      "name": "coin_bomb_03",
+      "path": "images/effects/coin_atlas/coin_bomb_03.webp",
+      "cellWidth": 1024,
+      "cellHeight": 1004,
+      "width": 4096,
+      "height": 4016,
+      "frames": [
+        {
+          "source": "images/effects/coin/coin_bomb/033.png",
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/034.png",
+          "x": 1024,
+          "y": 0,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/035.png",
+          "x": 2048,
+          "y": 0,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/036.png",
+          "x": 3072,
+          "y": 0,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/037.png",
+          "x": 0,
+          "y": 1004,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/038.png",
+          "x": 1024,
+          "y": 1004,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/039.png",
+          "x": 2048,
+          "y": 1004,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/040.png",
+          "x": 3072,
+          "y": 1004,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/041.png",
+          "x": 0,
+          "y": 2008,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/042.png",
+          "x": 1024,
+          "y": 2008,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/043.png",
+          "x": 2048,
+          "y": 2008,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/044.png",
+          "x": 3072,
+          "y": 2008,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/045.png",
+          "x": 0,
+          "y": 3012,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/046.png",
+          "x": 1024,
+          "y": 3012,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/047.png",
+          "x": 2048,
+          "y": 3012,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/048.png",
+          "x": 3072,
+          "y": 3012,
+          "width": 1024,
+          "height": 1004
+        }
+      ]
+    },
+    {
+      "name": "coin_bomb_04",
+      "path": "images/effects/coin_atlas/coin_bomb_04.webp",
+      "cellWidth": 1024,
+      "cellHeight": 1004,
+      "width": 4096,
+      "height": 2008,
+      "frames": [
+        {
+          "source": "images/effects/coin/coin_bomb/049.png",
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/050.png",
+          "x": 1024,
+          "y": 0,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/051.png",
+          "x": 2048,
+          "y": 0,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/052.png",
+          "x": 3072,
+          "y": 0,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/053.png",
+          "x": 0,
+          "y": 1004,
+          "width": 1024,
+          "height": 1004
+        },
+        {
+          "source": "images/effects/coin/coin_bomb/054.png",
+          "x": 1024,
+          "y": 1004,
+          "width": 1024,
+          "height": 1004
+        }
+      ]
+    }
+  ]
+}
